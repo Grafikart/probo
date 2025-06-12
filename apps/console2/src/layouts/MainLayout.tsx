@@ -11,6 +11,7 @@ import {
   IconSettingsGear2,
   IconStore,
   IconTodo,
+  IconListStack,
   Layout,
   SidebarItem,
   UserDropdown as UserDropdownRoot,
@@ -116,6 +117,11 @@ export function MainLayout() {
             label={__("Documents")}
             icon={IconPageTextLine}
             to={`${prefix}/documents`}
+          />
+          <SidebarItem
+            label={__("Data")}
+            icon={IconListStack}
+            to={`${prefix}/data`}
           />
           <SidebarItem
             label={__("Settings")}

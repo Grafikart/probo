@@ -3,9 +3,11 @@ import { graphql } from "relay-runtime";
 import { useMutationWithToasts } from "../useMutationWithToasts.ts";
 import type { VendorGraphCreateMutation } from "./__generated__/VendorGraphCreateMutation.graphql.ts";
 import type { VendorGraphDeleteMutation } from "./__generated__/VendorGraphDeleteMutation.graphql.ts";
-import { useMutation } from "react-relay";
+import type { VendorGraphSelectQuery } from "./__generated__/VendorGraphSelectQuery.graphql.ts";
+import { useMutation, useLazyLoadQuery } from "react-relay";
 import { useConfirm } from "@probo/ui";
 import { promisifyMutation, sprintf } from "@probo/helpers";
+import { useMemo } from "react";
 
 const createVendorMutation = graphql`
   mutation VendorGraphCreateMutation(
@@ -141,3 +143,30 @@ export const vendorNodeQuery = graphql`
     }
   }
 `;
+
+const vendorsSelectQuery = graphql`
+  query VendorGraphSelectQuery($organizationId: ID!) {
+    organization: node(id: $organizationId) {
+      ... on Organization {
+        vendors(first: 100, orderBy: { direction: ASC, field: NAME }) {
+          edges {
+            node {
+              id
+              name
+              websiteUrl
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export function useVendors(organizationId: string) {
+  const data = useLazyLoadQuery<VendorGraphSelectQuery>(vendorsSelectQuery, {
+    organizationId: organizationId,
+  });
+  return useMemo(() => {
+    return data.organization?.vendors?.edges.map((edge) => edge.node) ?? [];
+  }, [data]);
+}
