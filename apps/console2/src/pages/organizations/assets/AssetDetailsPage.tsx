@@ -25,7 +25,7 @@ import { PeopleSelectField } from "/components/form/PeopleSelectField";
 import { VendorsMultiSelectField } from "/components/form/VendorsMultiSelectField";
 import { useFormWithSchema } from "/hooks/useFormWithSchema";
 import z from "zod";
-import { getAssetTypeVariant, getCriticityVariant } from "./utils/badgeVariants";
+import { getAssetTypeVariant, getCriticityVariant } from "@probo/helpers";
 
 const updateAssetSchema = z.object({
   name: z.string().min(1, "Name is required"),

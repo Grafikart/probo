@@ -14,5 +14,6 @@ export { getRole, getRoles, peopleRoles } from "./people";
 export { certificationCategoryLabel, certifications } from "./certifications";
 export { availableFrameworks } from "./frameworks";
 export { getDocumentTypeLabel, documentTypes } from "./documents";
+export { getAssetTypeVariant, getCriticityVariant } from "./assets";
 export { promisifyMutation } from "./relay";
 export { fileType, fileSize } from "./file";

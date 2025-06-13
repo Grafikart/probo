@@ -23,7 +23,7 @@ import { useDeleteAsset, useAssets } from "../../../hooks/graph/AssetGraph";
 import type { AssetGraphListQuery } from "/hooks/graph/__generated__/AssetGraphListQuery.graphql";
 import { faviconUrl } from "@probo/helpers";
 import type { NodeOf } from "/types";
-import { getAssetTypeVariant, getCriticityVariant } from "./utils/badgeVariants";
+import { getAssetTypeVariant, getCriticityVariant } from "@probo/helpers";
 
 type AssetEntry = NodeOf<NonNullable<NonNullable<AssetGraphListQuery["response"]["node"]>["assets"]>>;
 

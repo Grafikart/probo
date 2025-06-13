@@ -1,7 +1,7 @@
 export const getAssetTypeVariant = (type: string) => {
   switch (type) {
     case "PHYSICAL":
-      return "warning";
+      return "neutral";
     case "VIRTUAL":
       return "info";
     default:
