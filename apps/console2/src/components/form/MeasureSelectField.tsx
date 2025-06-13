@@ -63,7 +63,7 @@ function MeasureSelectWithQuery(
           <Select
             id={name}
             variant="editor"
-            placeholder={__("Select an owner")}
+            placeholder={__("Select a measure")}
             onValueChange={field.onChange}
             {...field}
             className="w-full"
