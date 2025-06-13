@@ -72,6 +72,10 @@ const routes = [
           () => import("./pages/organizations/NewOrganizationPage")
         ),
       },
+      {
+        path: "documents/signing-requests",
+        Component: lazy(() => import("./pages/DocumentSigningRequestsPage.tsx")),
+      },
     ],
   },
   {

@@ -15,6 +15,7 @@ import {
   useConfirm,
   ActionDropdown,
   DropdownItem,
+  IconBell2,
 } from "@probo/ui";
 import {
   useFragment,
@@ -26,6 +27,7 @@ import type { DocumentGraphListQuery } from "/hooks/graph/__generated__/Document
 import {
   documentsQuery,
   useDeleteDocumentMutation,
+  useSendSigningNotificationsMutation,
 } from "/hooks/graph/DocumentGraph";
 import type { DocumentsPageListFragment$key } from "./__generated__/DocumentsPageListFragment.graphql";
 import { usePageTitle } from "@probo/hooks";
@@ -65,7 +67,17 @@ export default function DocumentsPage(props: Props) {
 
   const documents = data.documents.edges.map((edge) => edge.node);
   const connectionId = data.documents.__id;
+  const [sendSigningNotifications] = useSendSigningNotificationsMutation();
+
   usePageTitle(__("Documents"));
+
+  const handleSendSigningNotifications = () => {
+    sendSigningNotifications({
+      variables: {
+        input: { organizationId: organization.id },
+      },
+    });
+  };
 
   return (
     <div className="space-y-6">
@@ -73,10 +85,19 @@ export default function DocumentsPage(props: Props) {
         title={__("Documents")}
         description={__("Manage your organization's documents")}
       >
-        <CreateDocumentDialog
-          connection={connectionId}
-          trigger={<Button icon={IconPlusLarge}>{__("New document")}</Button>}
-        />
+        <div className="flex gap-2">
+                    <Button
+            icon={IconBell2}
+            variant="secondary"
+            onClick={handleSendSigningNotifications}
+          >
+            {__("Send signing notifications")}
+          </Button>
+          <CreateDocumentDialog
+            connection={connectionId}
+            trigger={<Button icon={IconPlusLarge}>{__("New document")}</Button>}
+          />
+        </div>
       </PageHeader>
       <Table>
         <Thead>

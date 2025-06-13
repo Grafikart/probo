@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<eb81ead93d6ec8abc015415a48daaf08>>
+ * @generated SignedSource<<00b3c915ccd04831f9161442e27b635e>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -39,14 +39,6 @@ export type AssetGraphListQuery$data = {
               };
             }>;
           };
-        };
-      }>;
-    };
-    readonly peoples?: {
-      readonly edges: ReadonlyArray<{
-        readonly node: {
-          readonly fullName: string;
-          readonly id: string;
         };
       }>;
     };
@@ -233,42 +225,7 @@ v15 = [
     "name": "first",
     "value": 100
   }
-],
-v16 = {
-  "alias": null,
-  "args": (v15/*: any*/),
-  "concreteType": "PeopleConnection",
-  "kind": "LinkedField",
-  "name": "peoples",
-  "plural": false,
-  "selections": [
-    {
-      "alias": null,
-      "args": null,
-      "concreteType": "PeopleEdge",
-      "kind": "LinkedField",
-      "name": "edges",
-      "plural": true,
-      "selections": [
-        {
-          "alias": null,
-          "args": null,
-          "concreteType": "People",
-          "kind": "LinkedField",
-          "name": "node",
-          "plural": false,
-          "selections": [
-            (v2/*: any*/),
-            (v8/*: any*/)
-          ],
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    }
-  ],
-  "storageKey": "peoples(first:100)"
-};
+];
 return {
   "fragment": {
     "argumentDefinitions": (v0/*: any*/),
@@ -343,8 +300,7 @@ return {
                   (v14/*: any*/)
                 ],
                 "storageKey": null
-              },
-              (v16/*: any*/)
+              }
             ],
             "type": "Organization",
             "abstractKey": null
@@ -440,8 +396,7 @@ return {
                 "key": "AssetsPage_assets",
                 "kind": "LinkedHandle",
                 "name": "assets"
-              },
-              (v16/*: any*/)
+              }
             ],
             "type": "Organization",
             "abstractKey": null
@@ -453,7 +408,7 @@ return {
     ]
   },
   "params": {
-    "cacheID": "2b452fda67547e63fb04fd4c6ae3ec7e",
+    "cacheID": "b070f08982995825d2695f833f773f5e",
     "id": null,
     "metadata": {
       "connection": [
@@ -470,11 +425,11 @@ return {
     },
     "name": "AssetGraphListQuery",
     "operationKind": "query",
-    "text": "query AssetGraphListQuery(\n  $organizationId: ID!\n) {\n  node(id: $organizationId) {\n    __typename\n    ... on Organization {\n      assets(first: 100) {\n        edges {\n          node {\n            id\n            name\n            amount\n            criticity\n            assetType\n            dataTypesStored\n            owner {\n              fullName\n              id\n            }\n            vendors(first: 50) {\n              edges {\n                node {\n                  id\n                  name\n                  websiteUrl\n                }\n              }\n            }\n            createdAt\n            __typename\n          }\n          cursor\n        }\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n      }\n      peoples(first: 100) {\n        edges {\n          node {\n            id\n            fullName\n          }\n        }\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query AssetGraphListQuery(\n  $organizationId: ID!\n) {\n  node(id: $organizationId) {\n    __typename\n    ... on Organization {\n      assets(first: 100) {\n        edges {\n          node {\n            id\n            name\n            amount\n            criticity\n            assetType\n            dataTypesStored\n            owner {\n              fullName\n              id\n            }\n            vendors(first: 50) {\n              edges {\n                node {\n                  id\n                  name\n                  websiteUrl\n                }\n              }\n            }\n            createdAt\n            __typename\n          }\n          cursor\n        }\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "63f6a6df2bdbcd5539e28f892e54c686";
+(node as any).hash = "79e2cf57067fabd4b124e6c0b47220dd";
 
 export default node;
