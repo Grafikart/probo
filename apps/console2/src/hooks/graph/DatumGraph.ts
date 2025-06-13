@@ -33,14 +33,6 @@ export const dataQuery = graphql`
             }
           }
         }
-        peoples(first: 100) {
-          edges {
-            node {
-              id
-              fullName
-            }
-          }
-        }
       }
     }
   }
