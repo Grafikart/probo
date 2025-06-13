@@ -37,7 +37,7 @@ import {
 import { useOrganizationId } from "/hooks/useOrganizationId";
 import { Button } from "@probo/ui";
 import { useMutationWithToasts } from "/hooks/useMutationWithToasts";
-import { sprintf } from "@probo/helpers";
+import { sprintf, getDocumentTypeLabel } from "@probo/helpers";
 import { Outlet, useNavigate } from "react-router";
 import UpdateVersionDialog from "./dialogs/UpdateVersionDialog";
 import { useRef } from "react";
@@ -52,6 +52,7 @@ const documentFragment = graphql`
   fragment DocumentDetailPageDocumentFragment on Document {
     id
     title
+    documentType
     owner {
       id
       fullName
@@ -265,6 +266,11 @@ export default function DocumentDetailPage(props: Props) {
             <Avatar name={document.owner?.fullName ?? ""} />
             {document.owner?.fullName}
           </Badge>
+        </PropertyRow>
+        <PropertyRow label={__("Type")}>
+          <div className="text-sm text-txt-secondary">
+            {getDocumentTypeLabel(__, document.documentType)}
+          </div>
         </PropertyRow>
         <PropertyRow label={__("Status")}>
           <Badge

@@ -29,7 +29,7 @@ import {
 } from "/hooks/graph/DocumentGraph";
 import type { DocumentsPageListFragment$key } from "./__generated__/DocumentsPageListFragment.graphql";
 import { usePageTitle } from "@probo/hooks";
-import { sprintf } from "@probo/helpers";
+import { sprintf, getDocumentTypeLabel } from "@probo/helpers";
 import { CreateDocumentDialog } from "./dialogs/CreateDocumentDialog";
 import type { DocumentsPageRowFragment$key } from "./__generated__/DocumentsPageRowFragment.graphql";
 
@@ -71,7 +71,7 @@ export default function DocumentsPage(props: Props) {
     <div className="space-y-6">
       <PageHeader
         title={__("Documents")}
-        description={__("Manage your organization’s documents")}
+        description={__("Manage your organization's documents")}
       >
         <CreateDocumentDialog
           connection={connectionId}
@@ -83,6 +83,7 @@ export default function DocumentsPage(props: Props) {
           <Tr>
             <Th>{__("Name")}</Th>
             <Th>{__("Status")}</Th>
+            <Th>{__("Type")}</Th>
             <Th>{__("Owner")}</Th>
             <Th>{__("Last update")}</Th>
             <Th>{__("Signatures")}</Th>
@@ -109,6 +110,7 @@ const rowFragment = graphql`
     id
     title
     description
+    documentType
     updatedAt
     owner {
       id
@@ -194,6 +196,9 @@ function DocumentRow({
         <Badge variant={isDraft ? "neutral" : "success"}>
           {isDraft ? __("Draft") : __("Published")}
         </Badge>
+      </Td>
+      <Td>
+        {getDocumentTypeLabel(__, document.documentType)}
       </Td>
       <Td>
         <div className="flex gap-2 items-center">

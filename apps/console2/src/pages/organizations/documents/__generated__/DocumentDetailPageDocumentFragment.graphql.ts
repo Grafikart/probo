@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<de19bed523a0a3e24807f5e7ecfef466>>
+ * @generated SignedSource<<4318aaecefe001fe6f42e6db26c421b4>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -10,12 +10,14 @@
 
 import { ReaderFragment } from 'relay-runtime';
 export type DocumentStatus = "DRAFT" | "PUBLISHED";
+export type DocumentType = "ISMS" | "OTHER" | "POLICY";
 export type DocumentVersionSignatureState = "REQUESTED" | "SIGNED";
 import { FragmentRefs } from "relay-runtime";
 export type DocumentDetailPageDocumentFragment$data = {
   readonly controlsInfo: {
     readonly totalCount: number;
   };
+  readonly documentType: DocumentType;
   readonly id: string;
   readonly owner: {
     readonly fullName: string;
@@ -145,6 +147,13 @@ return {
       "args": null,
       "kind": "ScalarField",
       "name": "title",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "documentType",
       "storageKey": null
     },
     {
@@ -346,6 +355,6 @@ return {
 };
 })();
 
-(node as any).hash = "ffd58750acd50c91d62a674ba158836c";
+(node as any).hash = "da1a4055d701fa9c3e0e0e50df24860f";
 
 export default node;
