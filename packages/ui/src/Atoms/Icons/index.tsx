@@ -1,4 +1,5 @@
 export { IconArrowUp } from "./IconArrowUp.tsx";
+export { IconBox } from "./IconBox.tsx";
 export { IconBell2 } from "./IconBell2.tsx";
 export { IconArrowInbox1 } from "./IconArrowInbox1.tsx";
 export { IconCircleX } from "./IconCircleX.tsx";

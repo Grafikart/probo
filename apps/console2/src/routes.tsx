@@ -26,6 +26,7 @@ import { frameworkRoutes } from "./routes/frameworkRoutes.ts";
 import { PageError } from "./components/PageError.tsx";
 import { taskRoutes } from "./routes/taskRoutes.ts";
 import { dataRoutes } from "./routes/dataRoutes.ts";
+import { assetRoutes } from "./routes/assetRoutes.ts";
 import { lazy } from "@probo/react-lazy";
 
 function ErrorBoundary() {
@@ -94,7 +95,6 @@ const routes = [
           }),
         Component: lazy(() => import("./pages/organizations/SettingsPage")),
       },
-      ...dataRoutes,
       ...riskRoutes,
       ...measureRoutes,
       ...documentsRoutes,
@@ -102,6 +102,8 @@ const routes = [
       ...vendorRoutes,
       ...frameworkRoutes,
       ...taskRoutes,
+      ...assetRoutes,
+      ...dataRoutes,
       {
         path: "*",
         Component: PageError,

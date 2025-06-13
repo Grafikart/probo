@@ -20,6 +20,7 @@ type Props =
     | BaseProps<"email", ComponentProps<typeof Input>>
     | BaseProps<"password", ComponentProps<typeof Input>>
     | BaseProps<"textarea", ComponentProps<typeof Textarea>>
+    | BaseProps<"number", ComponentProps<typeof Input>>
     | BaseProps<"select", ComponentProps<typeof Select>>;
 
 const field = tv({

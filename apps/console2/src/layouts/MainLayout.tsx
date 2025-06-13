@@ -12,6 +12,7 @@ import {
   IconStore,
   IconTodo,
   IconListStack,
+  IconBox,
   Layout,
   SidebarItem,
   UserDropdown as UserDropdownRoot,
@@ -117,6 +118,11 @@ export function MainLayout() {
             label={__("Documents")}
             icon={IconPageTextLine}
             to={`${prefix}/documents`}
+          />
+          <SidebarItem
+            label={__("Assets")}
+            icon={IconBox}
+            to={`${prefix}/assets`}
           />
           <SidebarItem
             label={__("Data")}
